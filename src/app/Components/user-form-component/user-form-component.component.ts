@@ -6,7 +6,6 @@ import { catchError, EMPTY, filter, Observable, switchMap, tap } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 import { ButtonComponent } from "../button/button.component";
-import { HeaderComponent } from "../header/header.component";
 import { ErrorHandleComponent } from "../error-handler/error-handler.component";
 import { LoaderComponent } from "../loader/loader.component";
 

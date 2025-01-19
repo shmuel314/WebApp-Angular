@@ -8,12 +8,11 @@ import { Router } from '@angular/router';
 import { ErrorHandleComponent } from '../error-handler/error-handler.component';
 import { LoaderComponent } from '../loader/loader.component';
 import { MatIconModule } from '@angular/material/icon';
-import { PopupMessageComponent } from "../popup-message/popup-message.component";
 
 @Component({
   selector: 'app-user-list-component',
   standalone: true,
-  imports: [AsyncPipe, ErrorHandleComponent, LoaderComponent, MatIconModule, ButtonComponent, LoaderComponent, PopupMessageComponent],
+  imports: [AsyncPipe, ErrorHandleComponent, LoaderComponent, MatIconModule, ButtonComponent, LoaderComponent],
   providers: [UserService],
   templateUrl: './user-list-component.component.html',
   styleUrl: './user-list-component.component.scss'
