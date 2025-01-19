@@ -1,0 +1,1 @@
+"I use JSON-Server to simulate a server. To run it, after installing NPM dependencies, navigate to the src folder and run the command: npx json-server --watch db.json --port 3000."
