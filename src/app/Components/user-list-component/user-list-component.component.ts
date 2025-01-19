@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { UserService } from '../../Services/user-service.service';
 import { IUser } from '../../interfaces';
 import { catchError, EMPTY, Observable } from 'rxjs';
@@ -19,17 +19,18 @@ import { MatIconModule } from '@angular/material/icon';
 })
 
 export class UserListComponentComponent {
-  // readonly addBtnIconStyle = { color: "rgb(212, 211, 245)", transform: "scale(4)" };
   readonly addBtnIconStyle: Partial<CSSStyleDeclaration> = {
     color: 'rgb(212, 211, 245)',
     transform: 'scale(4)',
     pointerEvents: 'none'
   };
+  readonly confirmDeleteModal = viewChild<ElementRef<HTMLDialogElement>>('confirmDeleteModal');
   private userService = inject(UserService);
   private router = inject(Router);
   hasError = signal(false);
   showPopup = signal(false);
   users$: Observable<IUser[]> = this.getAllUsers();
+  userIdToDelete!: number;
 
   getAllUsers(): Observable<IUser[]> {
     return this.userService.getAllUsers()
@@ -53,8 +54,13 @@ export class UserListComponentComponent {
     this.showPopup.set(true);
   }
 
-  deleteUser(id: number): void {
-    this.userService.deleteUser(id)
+  openConfirmDeleteModal(id: number): void {
+    this.userIdToDelete = id;
+    this.confirmDeleteModal()?.nativeElement.showModal();
+  }
+
+  deleteUser(): void {
+    this.userService.deleteUser(this.userIdToDelete)
       .pipe(
         catchError(() => {
           alert("Failed to delete the user")

@@ -1,17 +1,2 @@
-<!-- @if(text()) {
-    {{text()}}
-}
-<button class="button" [disabled]="disabled()" [type]="type()" (click)="onClick($event)">
-    @if (icon()) {
-        <mat-icon class="icon">{{icon()}}</mat-icon>
-    }
-</button> -->
-<!-- @if (icon()) {
-    <button class="button-icon" mat-button (click)="onClick($event)">
-        <mat-icon>{{icon()}}</mat-icon>
-    </button>
-} -->
-
-<!-- @else { -->
-    <button [class]="icon() ? 'button-icon' : 'button'" [disabled]="disabled()" [type]="type()" (click)="onClick($event)">{{text()}} @if (icon()) {<mat-icon [ngStyle]="iconStyle()" >{{icon()}}</mat-icon>}</button>
-<!-- } -->
+<button [class]="icon() ? 'button-icon' : 'button'" [disabled]="disabled()" [type]="type()"
+    (click)="onClick($event)">{{text()}} @if (icon()) {<mat-icon [ngStyle]="iconStyle()">{{icon()}}</mat-icon>}</button>

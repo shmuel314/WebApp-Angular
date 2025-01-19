@@ -4,14 +4,7 @@
     @for (user of usersList; track $index) {
     <div class="name-card">
         <div class="button-wrapper">
-                <dialog #dialog>
-                    <p>Are you sure you want to delete?</p>
-                    <div class="btn-del-wrapper">
-                        <app-button text="Yes" (onButtonClicked)="deleteUser(user.id)"></app-button>
-                        <app-button text="Cancel" (onButtonClicked)="dialog.close()"></app-button>
-                    </div>
-                </dialog>
-                <app-button icon="delete_outline" (onButtonClicked)="dialog.showModal()"></app-button>
+            <app-button icon="delete_outline" (onButtonClicked)="openConfirmDeleteModal(user.id)"></app-button>
             <app-button icon="edit" (onButtonClicked)="editUser(user.id)"></app-button>
         </div>
         <mat-icon class="user-icon">account_circle</mat-icon>
@@ -34,3 +27,11 @@
 @else {
 <app-loader />
 }
+
+<dialog #confirmDeleteModal>
+    <p>Are you sure you want to delete?</p>
+    <div class="btn-del-wrapper">
+        <app-button text="Yes" (onButtonClicked)="deleteUser()"></app-button>
+        <app-button text="Cancel" (onButtonClicked)="confirmDeleteModal.close()"></app-button>
+    </div>
+</dialog>

@@ -2,13 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     border-radius: 20px;
     width: 400px;
     height: 400px;
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .cancel-btn {
@@ -18,19 +16,11 @@
     margin-left: 4px;
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-}
-
 .form {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    justify-content: space-around;
+    margin-top: 40px;
     align-items: center;
 
     label {
@@ -45,23 +35,25 @@
         border-bottom: 1px solid gray;
         height: 30px;
     }
-    
+
     input:focus {
         outline: none;
-        border: none;  
+        border: none;
         border-bottom: 1px solid gray;
-      }
+    }
 }
 
 .input-wrapper {
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
 }
 
 .form-button {
     margin-top: 40px;
 }
 
-.errorMessage{ 
+.errorMessage {
     color: red;
+    display: flex;
+    justify-content: center;
 }

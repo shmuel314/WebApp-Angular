@@ -39,7 +39,6 @@ export class UserService {
       .pipe(
         delay(1000),
         catchError((err) => {
-          console.log("err in get check user exist: ", err);
           return throwError(() => err);
         }),
         map((res) => res.some((user) => user.email === email))

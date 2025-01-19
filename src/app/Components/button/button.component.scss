@@ -1,7 +1,7 @@
-$backgroundColor:  rgb(212, 211, 245);
+$backgroundColor: rgb(212, 211, 245);
 
 button {
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .button-icon {
@@ -13,11 +13,10 @@ button {
         padding: 5px;
     }
 
-    :hover{
-            //border: 1px solid $backgroundColor;
-            border-radius: 50%;
-            background-color: $backgroundColor;
-        }
+    :hover {
+        border-radius: 50%;
+        background-color: $backgroundColor;
+    }
 }
 
 .button {

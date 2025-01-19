@@ -1,6 +1,6 @@
 import { NgStyle } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, input, Output } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-button',
@@ -14,17 +14,16 @@ export class ButtonComponent {
 
   iconStyle = input<Partial<CSSStyleDeclaration>>({})
   text = input<string>();
-  type = input<string>("");
+  type = input<string>();
   icon = input<string>();
-  disabled = input<boolean>(false)
+  disabled = input<boolean>(false);
+
   @Output() onButtonClicked: EventEmitter<Event> = new EventEmitter<Event>();
 
   onClick(event: Event): void {
-    console.log("in on click");
-    
     this.onButtonClicked.emit(event);
   }
 
 
-  
+
 }

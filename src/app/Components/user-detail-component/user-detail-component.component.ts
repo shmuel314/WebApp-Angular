@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { UserService } from '../../Services/user-service.service';
 import { IUser } from '../../interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,7 +6,6 @@ import { catchError, EMPTY, Observable, tap } from 'rxjs';
 import { AsyncPipe, KeyValuePipe } from '@angular/common';
 import { ButtonComponent } from "../button/button.component";
 import { MatIconModule } from '@angular/material/icon';
-import { userDetails } from '../../enums';
 import { ErrorHandleComponent } from "../error-handler/error-handler.component";
 import { LoaderComponent } from "../loader/loader.component";
 
@@ -24,6 +23,7 @@ export class UserDetailComponent implements OnInit {
   private userService = inject(UserService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  
   hasError = signal(false);
   param!: string;
   userDetails$!: Observable<IUser>;

@@ -2,9 +2,8 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IUser } from '../../interfaces';
 import { UserService } from '../../Services/user-service.service';
-import { catchError, EMPTY, filter, Observable, switchMap, tap } from 'rxjs';
+import { catchError, EMPTY, filter, finalize, Observable, switchMap, tap } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AsyncPipe } from '@angular/common';
 import { ButtonComponent } from "../button/button.component";
 import { ErrorHandleComponent } from "../error-handler/error-handler.component";
 import { LoaderComponent } from "../loader/loader.component";
@@ -22,8 +21,10 @@ export class UserFormComponentComponent implements OnInit {
   private router = inject(Router);
   private userService = inject(UserService);
   private formBuilder = inject(FormBuilder);
+
   errorMessage = signal("");
   hasErrorLoadingData = signal(false);
+  disableButton = signal(false);
   userData$!: Observable<IUser>;
   userData!: IUser;
   id!: string;
@@ -76,6 +77,7 @@ export class UserFormComponentComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.disableButton.set(true);
     this.isEditMode ? this.updateUser() : this.addUser();
   }
 
@@ -84,6 +86,7 @@ export class UserFormComponentComponent implements OnInit {
     this.errorMessage.set("");
     this.userService.updateUser(this.idForUpdate, formData)
       .pipe(
+        finalize(() => this.disableButton.set(false)),
         catchError(() => {
           this.errorMessage.set("Something went wrong...");
           return EMPTY;
@@ -107,9 +110,10 @@ export class UserFormComponentComponent implements OnInit {
           if (isExist) {
             this.errorMessage.set("This user already exists");
           }
-         return !isExist;
+          return !isExist;
         }),
-        switchMap(() => this.userService.addUser(formData))
+        switchMap(() => this.userService.addUser(formData)),
+        finalize(() => this.disableButton.set(false)),
       )
       .subscribe(() => {
         this.returnToHome();
