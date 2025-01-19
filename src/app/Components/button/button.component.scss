@@ -1,0 +1,30 @@
+$backgroundColor:  rgb(212, 211, 245);
+
+button {
+    cursor: pointer; 
+}
+
+.button-icon {
+    background: transparent;
+    border: none;
+    padding: 0;
+
+    mat-icon {
+        padding: 5px;
+    }
+
+    :hover{
+            //border: 1px solid $backgroundColor;
+            border-radius: 50%;
+            background-color: $backgroundColor;
+        }
+}
+
+.button {
+    text-align: center;
+    width: 90px;
+    border-radius: 14px;
+    background-color: $backgroundColor;
+    border: 1px solid $backgroundColor;
+    padding: 6px;
+}

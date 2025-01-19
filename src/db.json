@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "Alice Johnson",
+      "id": "123456789",
+      "email": "alice.johnson@example.com",
+      "password": "alice123"
+    },
+    {
+      "id": "987654321",
+      "name": "Bob Smith",
+      "email": "bob.smith@example.com",
+      "password": "bob456"
+    },
+    {
+      "id": "456789123",
+      "name": "Charlie Brown",
+      "email": "charlie.brown@example.com",
+      "password": "charlie789"
+    },
+    {
+      "id": "789123456",
+      "name": "Daisy Adams",
+      "email": "daisy.adams@example.com",
+      "password": "daisy321"
+    },
+    {
+      "id": "567891234",
+      "name": "Fiona Davis",
+      "email": "fiona.davis@example.com",
+      "password": "fiona987"
+    },
+    {
+      "id": "891234567",
+      "name": "George Wilson",
+      "email": "george.wilson@example.com",
+      "password": "george432"
+    }
+  ]
+}

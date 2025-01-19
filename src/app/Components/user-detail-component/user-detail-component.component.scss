@@ -1,0 +1,40 @@
+.card {
+    background: white;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.details-wrapper{
+    display: flex;
+    height: 30px;
+}
+
+.button-wrapper {
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.user-icon {
+    color: lightgray;
+    transform: scale(5);
+}
+
+.keys-text {
+    font-weight: 500;
+    width: 94px;
+}

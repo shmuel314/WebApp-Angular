@@ -1,0 +1,17 @@
+.error-screen {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+mat-icon {
+    transform: scale(6);
+    color: red;
+}
+
+.error-message {
+    font-size: x-large;
+    color: red;
+}

@@ -1,0 +1,36 @@
+@let usersList = users$ | async;
+@if (usersList) {
+<div class="card-list">
+    @for (user of usersList; track $index) {
+    <div class="name-card">
+        <div class="button-wrapper">
+                <dialog #dialog>
+                    <p>Are you sure you want to delete?</p>
+                    <div class="btn-del-wrapper">
+                        <app-button text="Yes" (onButtonClicked)="deleteUser(user.id)"></app-button>
+                        <app-button text="Cancel" (onButtonClicked)="dialog.close()"></app-button>
+                    </div>
+                </dialog>
+                <app-button icon="delete_outline" (onButtonClicked)="dialog.showModal()"></app-button>
+            <app-button icon="edit" (onButtonClicked)="editUser(user.id)"></app-button>
+        </div>
+        <mat-icon class="user-icon">account_circle</mat-icon>
+        <p class="name-card-text">
+            <b>
+                {{user.name}}
+            </b>
+        </p>
+        <app-button class="details-btn" (onButtonClicked)="openUserDetails(user)" text="View Details"></app-button>
+    </div>
+    }
+    <div class="name-card add-new">
+        <app-button (onButtonClicked)="addUser()" icon="add_circle_outline" [iconStyle]="addBtnIconStyle"></app-button>
+    </div>
+</div>
+}
+@else if (hasError()) {
+<app-error-handle (refreshClicked)="refetchUsersList()" />
+}
+@else {
+<app-loader />
+}

@@ -1,0 +1,24 @@
+@let userDetails = userDetails$ | async;
+@if (userDetails) {
+    <div class="card">
+        <div class="button-wrapper">
+            <app-button class="cancel-btn" icon="home" (onButtonClicked)="returnToHome()" />
+            <app-button icon="edit" (onButtonClicked)="editUser(userDetails.id)" />
+        </div>
+        <mat-icon class="user-icon">account_circle</mat-icon>
+        <div class="details-container">
+            @for (detail of userDetails | keyvalue; track $index) {
+                <div class="details-wrapper">
+                    <p class="keys-text">{{detail.key}}: </p>
+                    <p>{{detail.value}}</p>
+                </div>
+            }
+        </div>
+    </div>
+}
+@else if (hasError()) {
+    <app-error-handle (refreshClicked)="getUserDetails()" />
+}
+@else {
+    <app-loader />
+}

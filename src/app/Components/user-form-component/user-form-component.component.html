@@ -1,0 +1,37 @@
+@if (!isEditMode || userData) {
+    <div class="form-card">
+        <app-button class="cancel-btn" icon="home" (onButtonClicked)="returnToHome()"></app-button>
+        <div class="form-container">
+            <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                <div class="input-wrapper">
+                    <label for="name">Name: </label>
+                    <input id="name" formControlName="name" />
+                </div>
+                <div class="input-wrapper">
+                    <label for="id">ID: </label>
+                    <input id="id" formControlName="id" />
+                </div>
+                <div class="input-wrapper">
+                    <label for="email">Email: </label>
+                    <input id="email" formControlName="email" />
+                </div>
+                <div class="input-wrapper">
+                    <label for="password">Password: </label>
+                    <input id="password" type="password" formControlName="password" />
+                </div>
+    
+                <app-button class="form-button" [disabled]="myForm.invalid" type="submit"
+                [text]="isEditMode ? 'Save' : 'Create' "></app-button>
+            </form>
+            <p class="errorMessage">
+            @if (errorMessage()) {
+                    {{errorMessage()}}
+                }
+            </p>
+        </div>
+    </div>
+} @else if (hasErrorLoadingData()) {
+    <app-error-handle (refreshClicked)="getUserData()" />
+} @else {
+    <app-loader />
+}
